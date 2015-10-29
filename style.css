@@ -1,0 +1,161 @@
+	/*>>>>>>>>>> RESET <<<<<<<<<<*/
+
+	* {
+		margin: 0;
+		padding: 0;
+	}
+
+	html {
+		height: 100%;
+	}
+
+	body {
+		color: #F2F2F2;
+		height: 100%;
+	}
+
+	h2 {
+		font-family: 'Chivo', sans-serif;
+		font-weight: 400;
+		z-index: 10;
+		position: absolute;
+    left: 80%;
+    overflow: hidden;
+    white-space: nowrap;
+    top: 35%
+	}
+
+	.flex-container {
+		display: flex;
+		flex-flow: row nowrap;
+		height: 100%;
+	}
+
+	.left {
+		flex: 1 50%;
+		order: 1; 
+		background: #E0D4BB;
+		position: relative;
+	}
+
+	.right {
+		flex: 1 50%;
+		order: 2; 
+		background: #E0D4BB;
+		position: relative;
+	}
+
+	.cold {
+		background: #81CFE0;
+		/*background: #72B7C6;*/
+	}
+
+	.warm {
+		background: #F89406;
+		/*background: #DE8505;*/	
+	}
+
+	.hot	{
+		background: #D91E18;
+		/*background: #BF1A15;*/
+	}
+
+	input[type="text"] {
+		font-family: 'Chivo', sans-serif;
+		font-size: 2.3em;
+		font-weight: 400;
+		width: 35%;
+    height: 60px;
+		border: none;
+		text-align: center;
+		z-index: 10;
+	}
+
+	:focus {
+		background: #C6BCA6;
+		outline: none;
+		color: #F2F2F2;
+	}
+
+	::-webkit-input-placeholder {
+   color: #F2F2F2;
+	}
+
+	.left-input {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    position: absolute;
+    top: 50%;
+    margin-top: -50px;
+    right: 0;
+	}
+
+	.right-input {
+		border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    position: absolute;
+    top: 50%;
+    margin-top: -50px;
+	}
+
+	/*>>>>>>>>>> ANIMATIONS <<<<<<<<<<*/
+
+	.hot-animation {
+			-webkit-animation: hotFade 10s infinite;
+			-moz-animation: hotFade 10s infinite;
+			-ms-animation: hotFade 10s infinite;
+			-o-animation: hotFade 10s infinite;
+			animation: hotFade 10s infinite;
+	}
+
+	.warm-animation {
+			-webkit-animation: warmFade 10s infinite;
+			-moz-animation: warmFade 10s infinite;
+			-ms-animation: warmFade 10s infinite;
+			-o-animation: warmFade 10s infinite;
+			animation: warmFade 10s infinite;
+	}
+
+	.cold-animation {
+			-webkit-animation: coldFade 10s infinite;
+			-moz-animation: coldFade 10s infinite;
+			-ms-animation: coldFade 10s infinite;
+			-o-animation: coldFade 10s infinite;
+			animation: coldFade 10s infinite;
+	}
+
+	@-webkit-keyframes hotFade {
+		0% {
+			background-color: #BF1A15;
+		}
+		50% {
+			background-color: #590C0A;
+		}
+		100% {
+			background-color: #D91E18;
+		}
+	}
+
+	@-webkit-keyframes warmFade {
+		0% {
+			background-color: #F89406;
+		}
+		50% {
+			background-color: #784803;
+		}
+		100% {
+			background-color: #DE8505;
+		}
+	}
+
+	@-webkit-keyframes coldFade {
+		0% {
+			background-color: #81CFE0;
+		}
+		50% {
+			background-color: #385960;
+		}
+		100% {
+			background-color: #72B7C6;
+		}
+	}
