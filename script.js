@@ -35,12 +35,14 @@
 			if (event.target.value <= 32){
 				leftBody.classList.add('cold');
 				rightBody.classList.add('cold-animation');
-			} else if (event.target.value > 32 && event.target.value <= 212){
+			} else if (event.target.value > 32 && event.target.value <= 86){
 				leftBody.classList.add('warm');
 				rightBody.classList.add('warm-animation');
-			} else if (event.target.value > 212){
+			} else if (event.target.value > 86){
 				leftBody.classList.add('hot');
 				rightBody.classList.add('hot-animation');
+			} else {
+				return ' ';
 			}
 	}
 
@@ -49,11 +51,13 @@
 		if (event.target.value <= 0) {
 			rightBody.classList.add('cold');
 			leftBody.classList.add('cold-animation');
-		} else if (event.target.value > 0 && event.target.value < 30){
+		} else if (event.target.value > 0 && event.target.value <= 30){
 			rightBody.classList.add('warm');
 			leftBody.classList.add('warm-animation');
-		} else if (event.target.value >= 100){
+		} else if (event.target.value > 30){
 			rightBody.classList.add('hot');
 			leftBody.classList.add('hot-animation');
+		} else {
+			return ' ';
 		}
 	}
