@@ -14,17 +14,6 @@
 		height: 100%;
 	}
 
-	h2 {
-		font-family: 'Chivo', sans-serif;
-		font-weight: 400;
-		z-index: 10;
-		position: absolute;
-    left: 80%;
-    overflow: hidden;
-    white-space: nowrap;
-    top: 35%
-	}
-
 	.flex-container {
 		display: flex;
 		flex-flow: row nowrap;
@@ -45,6 +34,68 @@
 		position: relative;
 	}
 
+	h2.left-word {
+    font-family: 'Chivo', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 1.7em;
+    z-index: 10;
+		position: absolute;
+		top: 35%;
+		right: 0;
+		padding-right: 10px; 
+		letter-spacing: 1.2px;
+	}
+
+	h2.right-word {
+    font-family: 'Chivo', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 1.7em;
+    z-index: 10;
+		position: absolute;
+		top: 35%;
+		padding-left: 10px;
+		letter-spacing: 1.2px;
+	}
+
+	h2 {
+		opacity: 0;
+  	-webkit-animation-delay: 0.3s;
+  	-moz-animation-delay: 0.3s;
+  	-ms-animation-delay: 0.3s;
+  	-o-animation-delay: 0.3s;
+	  animation-fill-mode: forwards;
+	}
+
+	.bouncy.left h2 {
+		animation-name: bounce-right;
+	}
+
+	.bouncy.left h2 {
+		animation-duration: 0.6s;
+	}
+
+	.bouncy.right h2 {
+		animation-name: bounce-left;
+	}
+
+	.bouncy.right h2 {
+		animation-duration: 0.6s;
+	}
+
+	i.fa.fa-info-circle {
+		padding-left: 20px;
+	}
+
+	a { 
+		color: inherit;
+	} 
+
+	a.tooltip::before {
+    content: attr(data-tip); 
+  }
+
 	.cold {
 		background: #81CFE0;
 		/*background: #72B7C6;*/
@@ -64,7 +115,7 @@
 		font-family: 'Chivo', sans-serif;
 		font-size: 2.3em;
 		font-weight: 400;
-		width: 35%;
+		width: 40%;
     height: 60px;
 		border: none;
 		text-align: center;
@@ -159,3 +210,118 @@
 			background-color: #72B7C6;
 		}
 	}
+
+	@keyframes bounce-right {
+	  0% {
+	    opacity: .2;
+	    transform: translateX(-200px);
+	  }
+	  60% {
+	    opacity: .7;
+	    transform: translateX(10px);
+	  }
+	  100% {
+	    opacity: 1;
+	    transform: translateX(0);
+	  }
+	}
+
+	@keyframes bounce-left {
+	  0% {
+	    opacity: .2;
+	    transform: translateX(200px);
+	  }
+	  60% {
+	    opacity: .7;
+	    transform: translateX(-10px);
+	  }
+	  100% {
+	    opacity: 1;
+	    transform: translateX(0);
+	  }
+	}
+
+[data-tooltip]:before,
+[data-tooltip]:after,
+.tooltip:before,
+.tooltip:after {
+  position: absolute;
+  visibility: hidden;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -webkit-transition: 
+	  opacity 0.2s ease-in-out,
+		visibility 0.2s ease-in-out,
+		-webkit-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+	-moz-transition:    
+		opacity 0.2s ease-in-out,
+		visibility 0.2s ease-in-out,
+		-moz-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+	transition:         
+		opacity 0.2s ease-in-out,
+		visibility 0.2s ease-in-out,
+		transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform:    translate3d(0, 0, 0);
+  transform:         translate3d(0, 0, 0);
+  pointer-events: none;
+}
+
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after,
+[data-tooltip]:focus:before,
+[data-tooltip]:focus:after,
+.tooltip:hover:before,
+.tooltip:hover:after,
+.tooltip:focus:before,
+.tooltip:focus:after {
+  visibility: visible;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+.tooltip:before,
+[data-tooltip]:before {
+  z-index: 1001;
+  border-top: 8px solid #000;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+  background: transparent;
+  content: "";
+}
+
+.tooltip:after,
+[data-tooltip]:after {
+  z-index: 1000;
+  padding: 10px;
+  width: 160px;
+  background-color: #C6BCA6;
+  /*background-color: hsla(0, 0%, 20%, 0.9);*/
+  color: #F2F2F2;
+  content: attr(data-tooltip);
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 1.2px;
+  text-align: center;
+}
+
+[data-tooltip]:before,
+[data-tooltip]:after,
+.tooltip:before,
+.tooltip:after,
+.tooltip-top:before,
+.tooltip-top:after {
+  bottom: 150%;
+  left: 53%;
+}
+
+[data-tooltip]:before,
+.tooltip:before,
+.tooltip-top:before {
+  margin-left: 37%;
+  margin-bottom: -7px;
+  border-top-color: #C6BCA6;
+  /*border-top-color: hsla(0, 0%, 20%, 0.9);*/
+}

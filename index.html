@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Temperature Converter</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link href='https://fonts.googleapis.com/css?family=Chivo:400,400italic,900,900italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="style.css">
 </head>
@@ -10,11 +11,12 @@
 
 	<div class="flex-container">
 
-		<div class="left">
-		<h2>Temperature Converter</h2>
+		<div class="left bouncy">
+		<h2 class="left-word">Temperature</h2>
 			<input class="left-input" type="text" placeholder="&deg;F">
 		</div>
-		<div class="right">
+		<div class="right bouncy">
+			<h2 class="right-word">Converter<a href="#" data-tooltip="Enter a number value for either temperature scale and the other will be calculated."><i class="fa fa-info-circle"></i></a></h2>
 			<input class="right-input" type="text" placeholder="&deg;C">
 		</div>
 	</div>
