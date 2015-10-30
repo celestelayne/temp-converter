@@ -6,34 +6,54 @@
 	var rightBody = document.querySelector('.right');
 
 // EVENTS
-	leftInput.addEventListener('keyup', farenheitToCelsius);
-	rightInput.addEventListener('keyup', celsiusToFarenheit);
+	leftInput.addEventListener('keyup', calcFarenheitToCelsius);
+	rightInput.addEventListener('keyup', calcCelsiusToFarenheit);
 
-	leftInput.addEventListener('keyup', changeColor);
+	leftInput.addEventListener('keyup', changeRightColor);
+	rightInput.addEventListener('keyup', changeLeftColor);
 
 // EVENT HANDLER FUNCTIONS
 
-	function farenheitToCelsius(event){
+	function calcFarenheitToCelsius(event){
 		// Farenheit to Celsius
-		var FtoC = (parseInt(leftInput.value)) - 32 * 5/9;
+		// console.log(event) <- keyboard event
+		var FtoC = (leftInput.value - 32) * (5/9);
 		rightInput.value = Math.round(FtoC);
+		var celsius = rightInput.value;
 	}
 
-	function celsiusToFarenheit(){
+	function calcCelsiusToFarenheit(event){
 		// Celsius to Farenheit
-		var CtoF = (rightInput.value * 9/5) + 32;
+		var CtoF = (rightInput.value * (9/5)) + 32;
 		leftInput.value = Math.round(CtoF);
+		var farenheit = leftInput.value;
+		// console.log(farenheit);
 	}
 
-	function changeColor(event){
-			if (leftInput.value < 32){
+	function changeRightColor(farenheit){
+		// console.log(event.target.value);
+			if (event.target.value <= 32){
 				leftBody.classList.add('cold');
 				rightBody.classList.add('cold-animation');
-			} else if (leftInput.value > 32 && leftInput.value < 212){
+			} else if (event.target.value > 32 && event.target.value <= 212){
 				leftBody.classList.add('warm');
 				rightBody.classList.add('warm-animation');
-			} else {
+			} else if (event.target.value > 212){
 				leftBody.classList.add('hot');
 				rightBody.classList.add('hot-animation');
 			}
+	}
+
+	function changeLeftColor(celsius) {
+		console.log(event.target.value);
+		if (event.target.value <= 0) {
+			rightBody.classList.add('cold');
+			leftBody.classList.add('cold-animation');
+		} else if (event.target.value > 0 && event.target.value < 30){
+			rightBody.classList.add('warm');
+			leftBody.classList.add('warm-animation');
+		} else if (event.target.value >= 100){
+			rightBody.classList.add('hot');
+			leftBody.classList.add('hot-animation');
+		}
 	}
