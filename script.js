@@ -1,4 +1,6 @@
 // STRUCTURE
+	var form = document.querySelectorAll('form');
+
 	var leftInput = document.querySelector('.left-input');
 	var rightInput = document.querySelector('.right-input');
 
@@ -15,6 +17,7 @@
 // EVENT HANDLER FUNCTIONS
 
 	function calcFarenheitToCelsius(event){
+		event.preventDefault();
 		// Farenheit to Celsius
 		// console.log(event) <- keyboard event
 		var FtoC = (leftInput.value - 32) * (5/9);
@@ -22,7 +25,9 @@
 		var celsius = rightInput.value;
 	}
 
+
 	function calcCelsiusToFarenheit(event){
+		event.preventDefault();
 		// Celsius to Farenheit
 		var CtoF = (rightInput.value * (9/5)) + 32;
 		leftInput.value = Math.round(CtoF);
@@ -31,21 +36,31 @@
 	}
 
 	function changeRightColor(farenheit){
-		// console.log(event.target.value);
+		console.log(event.target.value);
 			if (event.target.value <= 32){
 				leftBody.classList.add('cold');
 				rightBody.classList.add('cold-animation');
-			} else if (event.target.value > 32 && event.target.value <= 212){
+			} else {
+				setTimeout(function() {
+					rightBody.classList.remove('cold-animation');
+				}), 400} if (event.target.value > 32 && event.target.value <= 212){
 				leftBody.classList.add('warm');
 				rightBody.classList.add('warm-animation');
-			} else if (event.target.value > 212){
+			} else {
+				setTimeout(function() {
+					rightBody.classList.remove('warm-animation');
+				}), 400} if (event.target.value > 212){
 				leftBody.classList.add('hot');
 				rightBody.classList.add('hot-animation');
-			}
+			} else {
+				setTimeout(function() {
+					rightBody.classList.remove('hot-animation');
+				}), 400}
 	}
 
 	function changeLeftColor(celsius) {
-		console.log(event.target.value);
+
+		console.log(celsius);
 		if (event.target.value <= 0) {
 			rightBody.classList.add('cold');
 			leftBody.classList.add('cold-animation');
